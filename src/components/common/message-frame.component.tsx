@@ -1,13 +1,18 @@
-import React, { FC } from "react";
+import React, { CSSProperties, FC } from "react";
 
 interface MessageFrameInterface {
   className?: string;
+  style?: CSSProperties;
 }
 
-const MessageFrame: FC<MessageFrameInterface> = ({ className, children }) => {
+export const MessageFrame: FC<MessageFrameInterface> = ({
+  className,
+  children,
+  style = {},
+}) => {
   return (
     <div
-      style={{ height: "700px", width: "350px" }}
+      style={{ height: "700px", width: "350px", ...style }}
       className={`${
         className && className
       } bg-ios-dark-back flex flex-col justify-start `}
@@ -16,5 +21,3 @@ const MessageFrame: FC<MessageFrameInterface> = ({ className, children }) => {
     </div>
   );
 };
-
-export default MessageFrame;
