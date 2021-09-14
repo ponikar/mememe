@@ -4,6 +4,7 @@
 
 input:focus,
 button:focus,
-textarea:focus {
+textarea:focus,
+p:focus {
   outline: none;
 }
