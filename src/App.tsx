@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { AndroidWhatsappTheme } from "./components/android/whatsapp/android-whatsapp-theme.component";
 import { MessageFrame } from "./components/common/message-frame.component";
+import { CustomizeArea } from "./components/customize-area/customize-area.component";
 import { IMessageTheme } from "./components/ios/imessage/imessage-theme.component";
 
 const App: FC = () => {
@@ -17,7 +18,7 @@ const App: FC = () => {
           <AndroidWhatsappTheme />
         </MessageFrame>
       </section>
-      <section className="border border-red-900">Customize area</section>
+      <CustomizeArea />
     </main>
   );
 };
