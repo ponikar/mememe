@@ -1,4 +1,5 @@
 import React from "react";
+import { useChatContext } from "../../contexts/chat/chat.context";
 import Button from "../common/button.component";
 import {
   FlexBox,
@@ -8,6 +9,12 @@ import {
 import { Input } from "../common/input.component";
 
 export const ChatHeader = () => {
+  const {
+    state: {
+      header: { profileName, username },
+    },
+    dispatch,
+  } = useChatContext();
   return (
     <SectionContainer>
       <FlexBox className="justify-between">
