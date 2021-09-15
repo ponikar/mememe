@@ -7,8 +7,8 @@ import {
 
 export const CHAT_INITIAL_STATE: ChatReducerType = {
   header: {
-    profileImage: "",
-    username: "iamJack",
+    profileImage: "./src/svgs/avatar.svg",
+    activity_status: "Online",
     profileName: "Jack",
   },
   newDateLabel: "Today",
@@ -18,6 +18,7 @@ export const CHAT_INITIAL_STATE: ChatReducerType = {
     seen: false,
     time: "10:30 AM",
     from: "receiver",
+    type: "label",
   },
   messages: {},
 };

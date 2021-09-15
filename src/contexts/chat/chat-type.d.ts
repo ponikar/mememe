@@ -6,11 +6,12 @@ export interface ChatMessageType {
   seen: boolean;
   time: string;
   from: "sender" | "receiver";
+  type: "label" | "message";
 }
 
 export interface HeaderType {
   profileName: string;
-  username: string;
+  activity_status: string;
   profileImage: string;
 }
 

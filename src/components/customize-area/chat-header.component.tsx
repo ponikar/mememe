@@ -1,5 +1,5 @@
-import React from "react";
-import { useChatContext } from "../../contexts/chat/chat.context";
+import React, { ChangeEvent, useRef } from "react";
+import { useHeader } from "../../contexts/chat/header.hook";
 import Button from "../common/button.component";
 import {
   FlexBox,
@@ -9,21 +9,48 @@ import {
 import { Input } from "../common/input.component";
 
 export const ChatHeader = () => {
-  const {
-    state: {
-      header: { profileName, username },
-    },
-    dispatch,
-  } = useChatContext();
+  const [{ profileName, activity_status }, updateHeader] = useHeader();
+
+  const onChange = ({
+    target: { name, value },
+  }: ChangeEvent<HTMLInputElement>) => {
+    updateHeader({ [name]: value });
+  };
+
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const onFileChange = ({
+    target: { files },
+  }: ChangeEvent<HTMLInputElement>) => {
+    if (files) updateHeader({ profileImage: URL.createObjectURL(files[0]) });
+  };
+
+  const openFile = () => {
+    fileRef.current && fileRef.current.click();
+  };
+
   return (
     <SectionContainer>
       <FlexBox className="justify-between">
         <SectionTitle title="Chat Header" />
-        <Button title="Add Profile Picture" />
+        <input ref={fileRef} onChange={onFileChange} hidden type="file" />
+        <Button onClick={openFile} title="Add Profile Picture" />
       </FlexBox>
       <FlexBox>
-        <Input label="Profile Name" />
-        <Input label="Username" />
+        <Input
+          name="profileName"
+          onChange={onChange}
+          value={profileName}
+          label="Profile Name"
+          placeholder="Prem Chopra"
+        />
+        <Input
+          onChange={onChange}
+          name="activity_status"
+          value={activity_status}
+          label="Activity Status"
+          placeholder="Online"
+        />
       </FlexBox>
     </SectionContainer>
   );

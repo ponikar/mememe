@@ -1,4 +1,10 @@
-import React, { createContext, FC, useContext, useReducer } from "react";
+import React, {
+  createContext,
+  FC,
+  useContext,
+  useMemo,
+  useReducer,
+} from "react";
 import { ChatContextType, ChatReducerType } from "./chat-type";
 import { chatReducer, CHAT_INITIAL_STATE } from "./chat.reducer";
 
@@ -15,7 +21,16 @@ const { Provider } = ChatContext;
 
 export const ChatProvider: FC = ({ children }) => {
   const [state, dispatch] = useReducer(chatReducer, CHAT_INITIAL_STATE);
-  return <Provider value={{ state, dispatch }}>{children}</Provider>;
+
+  const memoizedValue = useMemo(
+    () => ({
+      state,
+      dispatch,
+    }),
+    [state, dispatch]
+  );
+
+  return <Provider value={{ ...memoizedValue }}>{children}</Provider>;
 };
 
 export const useChatContext = () => {

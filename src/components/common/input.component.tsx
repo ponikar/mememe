@@ -1,4 +1,10 @@
-import React, { FC, HTMLAttributes } from "react";
+import React, {
+  ClassAttributes,
+  FC,
+  HTMLAttributes,
+  InputHTMLAttributes,
+  TextareaHTMLAttributes,
+} from "react";
 
 interface InputProps {
   label?: string;
@@ -16,12 +22,11 @@ const InputContainer: FC = ({ children }) => {
   );
 };
 
-export const Input: FC<InputProps & HTMLAttributes<HTMLInputElement>> = ({
-  children,
-  label,
-  className = "",
-  ...props
-}) => {
+export const Input: FC<
+  InputProps &
+    InputHTMLAttributes<HTMLInputElement> &
+    ClassAttributes<HTMLInputElement>
+> = ({ children, label, className = "", ...props }) => {
   return (
     <InputContainer>
       {label && <label htmlFor="name"> {label} </label>}
@@ -33,11 +38,9 @@ export const Input: FC<InputProps & HTMLAttributes<HTMLInputElement>> = ({
   );
 };
 
-export const TextArea: FC<InputProps & HTMLAttributes<HTMLTextAreaElement>> = ({
-  children,
-  label,
-  ...props
-}) => {
+export const TextArea: FC<
+  InputProps & TextareaHTMLAttributes<HTMLTextAreaElement>
+> = ({ children, label, ...props }) => {
   return (
     <InputContainer>
       {label && <label htmlFor="name"> {label} </label>}
