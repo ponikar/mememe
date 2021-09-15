@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useReducer,
 } from "react";
-import { ChatContextType, ChatReducerType } from "./chat-type";
+import { ChatContextType } from "./chat-type";
 import { chatReducer, CHAT_INITIAL_STATE } from "./chat.reducer";
 
 const ChatContext = createContext<ChatContextType>({

@@ -3,9 +3,9 @@ import React from "react";
 export interface ChatMessageType {
   id: number;
   message: string;
-  seen: boolean;
+  seen: "yes" | "no";
   time: string;
-  from: "sender" | "receiver";
+  from: "sender" | "receiver" | null;
   type: "label" | "message";
 }
 
@@ -17,8 +17,6 @@ export interface HeaderType {
 
 export interface ChatReducerType {
   header: HeaderType;
-  newDateLabel: string;
-  newMessage: ChatMessageType;
   messages: {
     [key: string]: ChatMessageType;
   };
@@ -44,3 +42,11 @@ type DispatchTypes = ActionTypes[keyof ActionTypes];
 
 type ActionPayloadType<T = Partial<keyof ActionTypes>> =
   T extends keyof ActionTypes ? ActionTypes[T] : never;
+
+export type createMessageType = {
+  type: ChatMessageType["type"];
+  message: string;
+  time: string;
+  seen: ChatMessageType["seen"];
+  from: ChatMessageType["from"];
+};

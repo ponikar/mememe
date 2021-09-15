@@ -11,15 +11,6 @@ export const CHAT_INITIAL_STATE: ChatReducerType = {
     activity_status: "Online",
     profileName: "Jack",
   },
-  newDateLabel: "Today",
-  newMessage: {
-    id: new Date().getTime(),
-    message: "New Message",
-    seen: false,
-    time: "10:30 AM",
-    from: "receiver",
-    type: "label",
-  },
   messages: {},
 };
 
@@ -31,6 +22,10 @@ export const chatReducer = (
     case "HEADER_UPDATED":
       return { ...state, header: { ...state.header, ...action.payload } };
     case "NEW_MESSAGE_ADDED":
+      return {
+        ...state,
+        messages: { ...state.messages, [action.payload.id]: action.payload },
+      };
     default:
       return state;
   }

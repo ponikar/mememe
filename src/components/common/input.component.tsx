@@ -1,8 +1,8 @@
 import React, {
   ClassAttributes,
   FC,
-  HTMLAttributes,
   InputHTMLAttributes,
+  SelectHTMLAttributes,
   TextareaHTMLAttributes,
 } from "react";
 
@@ -52,19 +52,16 @@ export const TextArea: FC<
   );
 };
 
-export const Select: FC<InputProps & HTMLAttributes<HTMLSelectElement>> = ({
-  label,
-  children,
-  ...props
-}) => {
-  return (
-    <InputContainer>
-      {label && <label htmlFor="name"> {label} </label>}
-      <div className="flex">
-        <select {...props} className={`${INPUT_CLASSNAME}`}>
-          {children}
-        </select>
-      </div>
-    </InputContainer>
-  );
-};
+export const Select: FC<InputProps & SelectHTMLAttributes<HTMLSelectElement>> =
+  ({ label, children, ...props }) => {
+    return (
+      <InputContainer>
+        {label && <label htmlFor="name"> {label} </label>}
+        <div className="flex">
+          <select {...props} className={`${INPUT_CLASSNAME}`}>
+            {children}
+          </select>
+        </div>
+      </InputContainer>
+    );
+  };

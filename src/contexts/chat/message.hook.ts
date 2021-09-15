@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from "react";
-import { ChatMessageType } from "./chat-type";
+import { ChatMessageType, createMessageType } from "./chat-type";
 import { useChatContext } from "./chat.context";
 
 export const useMessage = () => {
@@ -15,7 +15,7 @@ export const useMessage = () => {
     [messages]
   );
   const addNewMessage = useCallback(
-    (payload: ChatMessageType) => {
+    (payload: createMessageType) => {
       dispatch({ type: "NEW_MESSAGE_ADDED", payload: createMessage(payload) });
     },
     [messages, dispatch]
@@ -24,23 +24,7 @@ export const useMessage = () => {
   return { messages: memoMessages, addNewMessage };
 };
 
-const createMessage = ({
-  type,
-  message,
-  time,
-  from,
-  seen,
-}: {
-  type: ChatMessageType["type"];
-  message: string;
-  time: string;
-  seen: boolean;
-  from: ChatMessageType["from"];
-}): ChatMessageType => ({
-  message,
+const createMessage = (props: createMessageType): ChatMessageType => ({
   id: new Date().getTime(),
-  type,
-  time,
-  from,
-  seen,
+  ...props,
 });

@@ -1,11 +1,13 @@
 import React, { FC } from "react";
+import { ChatMessageType } from "../../../../contexts/chat/chat-type";
+import { useMessage } from "../../../../contexts/chat/message.hook";
 
-interface AndroidWhatsappMessageItemProps {
+interface AndroidWhatsappMessageItemProps extends ChatMessageType {
   sender?: boolean;
-  message: string;
 }
 export const AndroidWhatsappMessageItem: FC<AndroidWhatsappMessageItemProps> =
-  ({ sender, message = "Edit me!" }) => {
+  ({ sender, message = "Edit me!", time, seen, id, from }) => {
+    const { messages } = useMessage();
     return (
       <section className={`flex my-2 w-full ${sender && "justify-end"}`}>
         <div
@@ -20,28 +22,30 @@ export const AndroidWhatsappMessageItem: FC<AndroidWhatsappMessageItemProps> =
           } `}
         >
           <p className="p-2"> {message} </p>
-          <div className="flex bottom-0  right-1 px-1 absolute">
+          <div className="flex bottom-0  right-0 px-1 absolute">
             <div
               style={{ fontSize: "11px" }}
               className="ml-2 text-android-whatsapp-label-text"
             >
-              11:30 AM
+              {time}
             </div>
-            {sender && (
-              <img src="./src/svgs/blue-tick.svg" className="w-5 ml-1" />
+            {sender && seen === "yes" && (
+              <img src="./src/svgs/blue-tick.svg" className="w-4 ml-1" />
             )}
           </div>
-          {sender ? (
-            <img
-              src="./src/svgs/whatsapp-msg-send.svg"
-              className="absolute -right-2 top-0"
-            />
-          ) : (
-            <img
-              src="./src/svgs/whatsapp-msg-receive.svg"
-              className="absolute -left-2 top-0"
-            />
-          )}
+          {messages[id + 1] && from === messages[id + 1].from ? (
+            sender ? (
+              <img
+                src="./src/svgs/whatsapp-msg-send.svg"
+                className="absolute -right-2 top-0"
+              />
+            ) : (
+              <img
+                src="./src/svgs/whatsapp-msg-receive.svg"
+                className="absolute -left-2 top-0"
+              />
+            )
+          ) : null}
         </div>
       </section>
     );
