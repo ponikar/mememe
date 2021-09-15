@@ -19,13 +19,14 @@ const InputContainer: FC = ({ children }) => {
 export const Input: FC<InputProps & HTMLAttributes<HTMLInputElement>> = ({
   children,
   label,
+  className = "",
   ...props
 }) => {
   return (
     <InputContainer>
       {label && <label htmlFor="name"> {label} </label>}
       <div className="flex">
-        <input {...props} className={`${INPUT_CLASSNAME}`} />
+        <input {...props} className={`${className} ${INPUT_CLASSNAME}`} />
         {children}
       </div>
     </InputContainer>

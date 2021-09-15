@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../common/button.component";
 import { FlexBox, SectionContainer } from "../common/container.component";
 import { Input, Select, TextArea } from "../common/input.component";
 
@@ -17,6 +18,8 @@ export const AddMessage = () => {
         </Select>
         <Input label="Message Time" />
       </FlexBox>
+
+      <Button title="Add" className="w-full" />
     </SectionContainer>
   );
 };

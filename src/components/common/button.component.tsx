@@ -6,10 +6,14 @@ interface ButtonProps {
 
 export const Button: FC<ButtonProps & HTMLAttributes<HTMLButtonElement>> = ({
   title,
+  className,
   ...props
 }) => {
   return (
-    <button {...props} className="p-2 text-xs bg-ios-primary rounded-sm">
+    <button
+      {...props}
+      className={`${className} p-2 text-xs bg-ios-primary rounded-sm`}
+    >
       {title}
     </button>
   );
