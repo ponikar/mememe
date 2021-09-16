@@ -21,7 +21,14 @@ export const useMessage = () => {
     [messages, dispatch]
   );
 
-  return { messages: memoMessages.messages, addNewMessage };
+  const deleteMessage = useCallback(
+    (payload: number) => {
+      dispatch({ type: "MESSAGE_DELETED", payload });
+    },
+    [messages, dispatch]
+  );
+
+  return { messages: memoMessages.messages, addNewMessage, deleteMessage };
 };
 
 const createMessage = (props: createMessageType): ChatMessageType => ({

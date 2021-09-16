@@ -36,6 +36,10 @@ interface ActionTypes {
     type: "NEW_MESSAGE_ADDED";
     payload: ChatMessageType;
   };
+  MESSAGE_DELETED: {
+    type: "MESSAGE_DELETED";
+    payload: number;
+  };
 }
 
 type DispatchTypes = ActionTypes[keyof ActionTypes];
