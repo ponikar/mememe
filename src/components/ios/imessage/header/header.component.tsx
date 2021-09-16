@@ -1,6 +1,8 @@
 import React from "react";
+import { useHeader } from "../../../../contexts/chat/header.hook";
 
 export const IMessageHeader = () => {
+  const [{ profileImage, profileName }] = useHeader();
   return (
     <>
       <img src="./src/svgs/ios-network.svg" className="w-11/12 mx-auto my-2" />
@@ -15,11 +17,11 @@ export const IMessageHeader = () => {
         {/* profile */}
         <div className="relative -left-5">
           <img
-            src="./src/svgs/avatar.svg"
+            src={profileImage}
             className="bg-ios-border rounded-full h-10 w-10 object-cover"
           />
           <div className="flex justify-center items-center mt-1">
-            <div className="text-xs text-center">Me</div>
+            <div className="text-xs text-center">{profileName}</div>
             <img
               className="ml-1"
               style={{ width: "6px" }}

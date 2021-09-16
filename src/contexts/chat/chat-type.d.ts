@@ -54,3 +54,9 @@ export type createMessageType = {
   seen: ChatMessageType["seen"];
   from: ChatMessageType["from"];
 };
+
+export interface MessageItemsProps extends ChatMessageType {
+  sender?: boolean;
+  index: number;
+  prevToMe: boolean;
+}

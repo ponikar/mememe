@@ -1,37 +1,50 @@
 import React, { FC } from "react";
+import { MessageItemsProps } from "../../../../../contexts/chat/chat-type";
 
-interface IMessageItemProps {
-  sender?: boolean;
-  message: string;
-
-  delivered?: boolean;
-}
-
-export const IMessageItem: FC<IMessageItemProps> = ({
-  sender,
+export const IMessageItem: FC<MessageItemsProps> = ({
   message,
-  delivered,
+  from,
+  seen,
+  prevToMe,
 }) => {
+  const sender = from === "sender";
+  const showDelivered = !prevToMe && sender && seen;
   return (
-    <div className={`flex ${sender && "justify-end"}  w-full`}>
+    <div
+      className={`flex ${showDelivered && "mb-5"} ${
+        sender && "justify-end"
+      }  w-full`}
+    >
       <div
-        style={{ maxWidth: "75%", width: "auto" }}
-        className={`px-3 break-all ${
+        style={{
+          maxWidth: "75%",
+          width: "auto",
+          margin: `${!prevToMe ? "5px" : "1.5px"} 0px`,
+        }}
+        className={`px-3 ${
           sender ? " bg-ios-primary" : "bg-ios-dark-second"
-        } my-1 shadow relative text-sm py-2 w-auto  rounded-3xl `}
+        } shadow relative text-sm py-2 w-auto  rounded-2xl `}
       >
-        <p style={{ zIndex: 2 }}>{message}</p>
-        <img
-          className="absolute"
-          style={{ bottom: "0px", [sender ? "right" : "left"]: "-3.45px" }}
-          src={
-            sender
-              ? "./src/svgs/ios-message-tail-right.svg"
-              : "./src/svgs/ios-message-tail-left.svg"
-          }
-        />
+        <div className="text-sm" style={{ zIndex: 1000 }}>
+          {message}
+        </div>
+        {!prevToMe && (
+          <img
+            className="absolute"
+            style={{
+              bottom: "0.5px",
+              [sender ? "right" : "left"]: "-5.3px",
+              zIndex: 0,
+            }}
+            src={
+              sender
+                ? "./src/svgs/ios-message-tail-right.svg"
+                : "./src/svgs/ios-message-tail-left.svg"
+            }
+          />
+        )}
 
-        {sender && delivered && (
+        {showDelivered && (
           <p className="text-xs font-semibold absolute right-0 text-ios-highlight-second -bottom-5">
             Delivered
           </p>
