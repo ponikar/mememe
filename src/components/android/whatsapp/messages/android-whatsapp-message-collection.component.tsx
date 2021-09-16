@@ -1,5 +1,6 @@
 import React from "react";
 import { useMessage } from "../../../../contexts/chat/message.hook";
+import { isFromSame } from "../../../../helpers/messages.helper";
 import { AndroidWhatsappLabel } from "../label/android-whatsapp-label.component";
 import { AndroidWhatsappMessageItem } from "./android-whatsapp-message-item.component";
 
@@ -9,16 +10,18 @@ export const AndroidWhatsappMessageCollection = () => {
   return (
     <section
       style={{ maxHeight: "100%" }}
-      className="flex-grow overflow-auto px-5"
+      className="flex-grow overflow-auto px-4"
     >
-      {Object.entries(messages).map(([key, msg], index) => {
+      {messages.map((msg, index) => {
         return msg.type === "label" ? (
-          <AndroidWhatsappLabel key={key} {...msg} />
+          <AndroidWhatsappLabel key={msg.id} {...msg} />
         ) : (
           <AndroidWhatsappMessageItem
+            prevToMe={isFromSame(messages, index)}
             sender={msg.from === "sender"}
             {...msg}
-            key={key}
+            index={index}
+            key={msg.id}
           />
         );
       })}

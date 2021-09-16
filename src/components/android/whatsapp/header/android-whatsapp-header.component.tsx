@@ -9,7 +9,7 @@ export const AndroidWhatsappHeader = () => {
         <img src="./src/svgs/arrow-left.svg" />
         <img
           src={profileImage}
-          className="rounded-full ml-1 h-9 w-9 object-contain"
+          className="rounded-full ml-1 h-9 w-9 object-cover"
         />
         <div className="ml-2 text-android-whatsapp-highlight">
           <h2 className="font-semibold"> {profileName} </h2>

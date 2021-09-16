@@ -5,18 +5,23 @@ import Button from "../common/button.component";
 import { FlexBox, SectionContainer } from "../common/container.component";
 import { Input, Select, TextArea } from "../common/input.component";
 
+const INITIAL_STATE: createMessageType = {
+  message: "",
+  seen: "yes",
+  time: "10:30 AM",
+  from: "receiver",
+  type: "message",
+};
+
 export const AddMessage = () => {
   const { addNewMessage } = useMessage();
-  const [message, setMessage] = useState<createMessageType>({
-    message: "New Message",
-    seen: "yes",
-    time: "10:30 AM",
-    from: "receiver",
-    type: "message",
-  });
+  const [message, setMessage] = useState<createMessageType>(INITIAL_STATE);
 
   const add = () => {
-    addNewMessage(message);
+    if (message.message) {
+      addNewMessage(message);
+      setMessage({ ...message, message: "" });
+    }
   };
 
   const onChange = ({
@@ -25,7 +30,6 @@ export const AddMessage = () => {
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
   >) => {
     setMessage({ ...message, [name]: value });
-    console.log("WORKING", name, value);
   };
   return (
     <SectionContainer title="Chat Messages">

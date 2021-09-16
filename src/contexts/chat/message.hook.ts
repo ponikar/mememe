@@ -10,7 +10,7 @@ export const useMessage = () => {
 
   const memoMessages = useMemo(
     () => ({
-      ...messages,
+      messages: Object.entries(messages).map((msg) => msg[1]),
     }),
     [messages]
   );
@@ -21,7 +21,7 @@ export const useMessage = () => {
     [messages, dispatch]
   );
 
-  return { messages: memoMessages, addNewMessage };
+  return { messages: memoMessages.messages, addNewMessage };
 };
 
 const createMessage = (props: createMessageType): ChatMessageType => ({
