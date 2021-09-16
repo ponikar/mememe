@@ -3,8 +3,6 @@ import { MessageItemsProps } from "../../../../contexts/chat/chat-type";
 
 export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
   ({ sender, message = "Edit me!", time, seen, index, from, prevToMe }) => {
-    console.log(index);
-
     return (
       <section
         className={`flex ${prevToMe ? "mt-1" : "mt-3"} w-full ${
@@ -18,7 +16,7 @@ export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
             paddingRight: message.length < 10 ? "65px" : "10px",
             paddingBottom: "10px",
           }}
-          className={`break-all items-start  flex relative shadow-sm text-sm text-black rounded-md ${
+          className={`items-start  flex relative shadow-sm text-sm text-black rounded-md ${
             sender ? "bg-android-whatsapp-chat" : " bg-white"
           } `}
         >
