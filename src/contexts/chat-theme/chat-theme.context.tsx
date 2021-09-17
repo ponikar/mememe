@@ -6,21 +6,16 @@ import React, {
   useMemo,
   useState,
 } from "react";
-
-const CHAT_THEME = {
-  WHATSAPP: 1,
-  IMESSAGE: 2,
-};
-
-type StateType = typeof CHAT_THEME;
+import { ChatThemeType, ThemeType } from "./chat-theme";
+import { CHAT_THEME } from "./chat-theme.data";
 
 const ChatThemeContext = createContext<{
-  theme: StateType["WHATSAPP"];
-  setTheme: (theme: keyof StateType) => void;
+  theme: ThemeType;
+  setTheme: (theme: keyof ChatThemeType) => void;
 } | null>(null);
 
 export const ChatThemeProvider: FC = ({ children }) => {
-  const [theme, setTheme] = useState<StateType["WHATSAPP"]>(1);
+  const [theme, setTheme] = useState<ThemeType>(CHAT_THEME["WHATSAPP"]);
 
   const memoizedValue = useMemo(
     () => ({
@@ -30,7 +25,7 @@ export const ChatThemeProvider: FC = ({ children }) => {
   );
 
   const setCurrentTheme = useCallback(
-    (theme: keyof StateType) => {
+    (theme: keyof ChatThemeType) => {
       setTheme(CHAT_THEME[theme]);
     },
     [setTheme]
