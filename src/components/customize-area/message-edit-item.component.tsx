@@ -4,7 +4,7 @@ import { useMessage } from "../../contexts/chat/message.hook";
 
 export const MessageEditItem: FC<ChatMessageType & { index: number }> = memo(
   ({ message, type, index, id }) => {
-    const { deleteMessage } = useMessage();
+    const { deleteMessage, setMessageID } = useMessage();
     return (
       <section className="my-2 p-3 bg-ios-dark-second flex w-full justify-between">
         <div className="flex w-10/12 items-center">
@@ -14,6 +14,7 @@ export const MessageEditItem: FC<ChatMessageType & { index: number }> = memo(
 
         <div className="flex w-2/12 justify-around items-center">
           <img
+            onClick={(_) => setMessageID(id)}
             src="./src/svgs/edit.svg"
             alt=""
             className="w-5 cursor-pointer"

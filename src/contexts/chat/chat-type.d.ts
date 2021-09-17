@@ -20,6 +20,7 @@ export interface ChatReducerType {
   messages: {
     [key: string]: ChatMessageType;
   };
+  messageID?: ChatMessageType["id"] | null;
 }
 
 export interface ChatContextType {
@@ -38,14 +39,23 @@ interface ActionTypes {
   };
   MESSAGE_DELETED: {
     type: "MESSAGE_DELETED";
-    payload: number;
+    payload: ChatMessageType["id"];
+  };
+  MESSAGE_UPDATED: {
+    type: "MESSAGE_UPDATED";
+    payload: ChatMessageType;
+  };
+  SET_MESSAGE_ID: {
+    type: "SET_MESSAGE_ID";
+    payload: ChatMessageType["id"] | null;
   };
 }
 
 type DispatchTypes = ActionTypes[keyof ActionTypes];
 
-type ActionPayloadType<T = Partial<keyof ActionTypes>> =
-  T extends keyof ActionTypes ? ActionTypes[T] : never;
+export type ActionPayloadType = {
+  [P in keyof ActionTypes]: ActionTypes[P]["payload"];
+};
 
 export type createMessageType = {
   type: ChatMessageType["type"];

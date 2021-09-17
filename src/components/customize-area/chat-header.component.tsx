@@ -36,7 +36,7 @@ export const ChatHeader = () => {
         <input ref={fileRef} onChange={onFileChange} hidden type="file" />
         <Button onClick={openFile} title="Add Profile Picture" />
       </FlexBox>
-      <FlexBox>
+      <FlexBox className="flex-wrap">
         <Input
           name="profileName"
           onChange={onChange}
