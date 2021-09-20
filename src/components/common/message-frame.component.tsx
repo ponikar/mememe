@@ -6,7 +6,7 @@ interface MessageFrameInterface {
 }
 
 export const MessageFrame: FC<MessageFrameInterface> = ({
-  className,
+  className = "",
   children,
   style = {},
 }) => {
@@ -14,9 +14,7 @@ export const MessageFrame: FC<MessageFrameInterface> = ({
     <div
       style={{ height: "700px", width: "350px", ...style }}
       id="chat-preview"
-      className={`${
-        className && className
-      } bg-ios-dark-back flex flex-col justify-start `}
+      className={`${className} border-ios-dark-second border shadow-lg scroll-area bg-ios-dark-back flex flex-col justify-start `}
     >
       {children}
     </div>

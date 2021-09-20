@@ -6,7 +6,7 @@ import { ChatProvider } from "./contexts/chat/chat.context";
 
 const App: FC = () => {
   return (
-    <main className="sm:w-10/12 w-full text-ios-text mx-auto border grid sm:grid-cols-3">
+    <main className="sm:w-10/12 w-full text-ios-text mx-auto grid sm:grid-cols-3">
       <ChatThemeProvider>
         <ChatProvider>
           <MesssagePreview />

@@ -6,7 +6,7 @@ const downloadImage = () => {
 
   if (image) {
     htmlToImage
-      .toPng(image, {
+      .toPng(image as HTMLElement, {
         quality: 0.6,
       })
       .then((dataUrl) => {
@@ -18,5 +18,9 @@ const downloadImage = () => {
   }
 };
 export const DownloadButton = () => {
-  return <button onClick={downloadImage}>Download button</button>;
+  return (
+    <button className="p-2 rounded-full bg-ios-primary" onClick={downloadImage}>
+      <img src="./src/svgs/download.svg" className="stroke-current" alt="" />
+    </button>
+  );
 };

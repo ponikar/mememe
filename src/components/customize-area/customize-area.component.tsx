@@ -7,7 +7,7 @@ import { MessageEditCollection } from "./message-edit-collection.component";
 
 export const CustomizeArea = () => {
   return (
-    <section className="border bg-ios-dark-back  border-black">
+    <section className="bg-ios-dark-back">
       <ChatHeader />
       <AddDateLabel />
       <AddMessage />
