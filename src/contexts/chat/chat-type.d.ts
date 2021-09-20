@@ -15,11 +15,13 @@ export interface HeaderType {
   profileImage: string;
 }
 
+export interface MessageType {
+  [key: string]: ChatMessageType;
+}
+
 export interface ChatReducerType {
   header: HeaderType;
-  messages: {
-    [key: string]: ChatMessageType;
-  };
+  messages: MessageType;
   messageID?: ChatMessageType["id"] | null;
 }
 
@@ -48,6 +50,10 @@ interface ActionTypes {
   SET_MESSAGE_ID: {
     type: "SET_MESSAGE_ID";
     payload: ChatMessageType["id"] | null;
+  };
+  SET_MESSAGES: {
+    type: "SET_MESSAGES";
+    payload: MessageType;
   };
 }
 

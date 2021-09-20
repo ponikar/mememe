@@ -3,6 +3,7 @@ import {
   ActionPayloadType,
   ChatMessageType,
   createMessageType,
+  MessageType,
 } from "./chat-type";
 import { useChatContext } from "./chat.context";
 
@@ -60,6 +61,21 @@ export const useMessage = () => {
     [messages, dispatch]
   );
 
+  const setMessages = useCallback(
+    (messages: ChatMessageType[]) => {
+      const messagesObject: MessageType = {};
+
+      messages.forEach((msg) => {
+        messagesObject[msg.id] = msg;
+      });
+      dispatch({
+        type: "SET_MESSAGES",
+        payload: messagesObject,
+      });
+    },
+    [messages, dispatch]
+  );
+
   return {
     messages: memoMessages.messages,
     messageID: memoMessageID.messageID,
@@ -68,6 +84,7 @@ export const useMessage = () => {
     updateMessage,
     setMessageID,
     getMessage,
+    setMessages,
   };
 };
 

@@ -35,6 +35,8 @@ export const chatReducer = (
       return { ...state, messages: { ...state.messages } };
     case "SET_MESSAGE_ID":
       return { ...state, messageID: action.payload };
+    case "SET_MESSAGES":
+      return { ...state, messages: { ...action.payload } };
     default:
       return state;
   }
