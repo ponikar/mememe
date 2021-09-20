@@ -2,6 +2,7 @@ import React from "react";
 import { useChatTheme } from "../../contexts/chat-theme/chat-theme.context";
 import { CHAT_THEME } from "../../contexts/chat-theme/chat-theme.data";
 import { FlexBox } from "../common/container.component";
+import { DownloadButton } from "../download-button/download-button.component";
 
 export const SelectTheme = () => {
   const { setTheme, theme } = useChatTheme();
@@ -26,7 +27,7 @@ export const SelectTheme = () => {
         </FlexBox>
       </FlexBox>
 
-      <div>Download button</div>
+      <DownloadButton />
     </FlexBox>
   );
 };

@@ -13,6 +13,7 @@ export const MessageFrame: FC<MessageFrameInterface> = ({
   return (
     <div
       style={{ height: "700px", width: "350px", ...style }}
+      id="chat-preview"
       className={`${
         className && className
       } bg-ios-dark-back flex flex-col justify-start `}
