@@ -11,7 +11,7 @@ export const Model: FC<BackDropProps> = ({ children, onBackPress }) => {
           transform: "translate(-50%, -50%)",
         }}
         onClick={(e) => e.stopPropagation()}
-        className="fixed bg-ios-dark-back w-4/12 p-3 shadow rounded"
+        className="fixed bg-ios-dark-back sm:w-4/12 w-11/12 p-3 shadow rounded"
       >
         {children}
       </section>

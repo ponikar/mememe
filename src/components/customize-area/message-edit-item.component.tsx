@@ -25,11 +25,11 @@ export const MessageEditItem: FC<
           onClick={(_) => setMessageID(id)}
           src="./src/svgs/edit.svg"
           alt=""
-          className="w-5 cursor-pointer"
+          className="cursor-pointer p-1"
         />
         <img
           onClick={(_) => deleteMessage(id)}
-          className="ml-2 cursor-pointer"
+          className="p-1 cursor-pointer"
           src="./src/svgs/x.svg"
           alt=""
         />

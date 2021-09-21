@@ -9,7 +9,7 @@ export const MesssagePreview = () => {
     theme: { style = {} },
   } = useChatTheme();
   return (
-    <section className="col-span-2 bg-ios-dark-back flex-col flex p-10 justify-around items-center border border-black">
+    <section className="col-span-2 bg-ios-dark-back flex-col flex sm:p-10 p-4 justify-around items-center">
       <MessageFrame style={style}>
         <CurrentTheme />
       </MessageFrame>
