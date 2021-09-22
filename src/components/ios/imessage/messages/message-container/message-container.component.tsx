@@ -14,7 +14,10 @@ export const IMessageCollection: FC = () => {
       </IMessageLabel>
       {messages.map((msg, index) => {
         return msg.type === "label" ? (
-          <IMessageLabel className={index == 0 ? "mb-2" : "mt-4 mb-2"}>
+          <IMessageLabel
+            key={msg.id}
+            className={index == 0 ? "mb-2" : "mt-4 mb-2"}
+          >
             <p className="font-semibold"> {msg.message} </p>
           </IMessageLabel>
         ) : (
