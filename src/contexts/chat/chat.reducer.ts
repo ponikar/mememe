@@ -7,7 +7,7 @@ import {
 
 export const CHAT_INITIAL_STATE: ChatReducerType = {
   header: {
-    profileImage: "./src/svgs/avatar.svg",
+    profileImage: "/svgs/avatar.svg",
     activity_status: "Online",
     profileName: "Jack",
   },

@@ -5,10 +5,10 @@ export const IMessageHeader = () => {
   const [{ profileImage, profileName }] = useHeader();
   return (
     <>
-      <img src="./src/svgs/ios-network.svg" className="w-11/12 mx-auto my-2" />
+      <img src="/svgs/ios-network.svg" className="w-11/12 mx-auto my-2" />
       <nav className="items-start justify-between flex border-b border-ios-border px-1 py-3">
         <div className="flex mt-2 items-center">
-          <img src="./src/svgs/ios-back.svg" className="w-5 h-5" />
+          <img src="/svgs/ios-back.svg" className="w-5 h-5" />
           <h5 className="rounded-full w-4 h-4 text-xs relative -left-1 flex justify-center items-center  bg-ios-highlight">
             2
           </h5>
@@ -25,7 +25,7 @@ export const IMessageHeader = () => {
             <img
               className="ml-1"
               style={{ width: "6px" }}
-              src="./src/svgs/ios-small-right.svg"
+              src="/svgs/ios-small-right.svg"
             />
           </div>
         </div>

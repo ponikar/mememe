@@ -6,7 +6,7 @@ export const AndroidWhatsappHeader = () => {
   return (
     <nav className="p-2 flex bg-android-whatsapp-primary shadow-md justify-between">
       <div className="flex items-center">
-        <img src="./src/svgs/arrow-left.svg" />
+        <img src="/svgs/arrow-left.svg" />
         <img
           src={profileImage}
           className="rounded-full ml-1 h-9 w-9 object-cover"
@@ -19,15 +19,15 @@ export const AndroidWhatsappHeader = () => {
       <div className="flex">
         <img
           className="ml-2 w-5 shadow-sm object-contain"
-          src="./src/svgs/video.svg"
+          src="/svgs/video.svg"
         />
         <img
           className="ml-5 w-5 shadow-sm object-contain"
-          src="./src/svgs/call.svg"
+          src="/svgs/call.svg"
         />
         <img
           className="ml-2 w-5 shadow-sm object-contain"
-          src="./src/svgs/more-vertical.svg"
+          src="/svgs/more-vertical.svg"
         />
       </div>
     </nav>

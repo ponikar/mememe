@@ -38,8 +38,8 @@ export const IMessageItem: FC<MessageItemsProps> = ({
             }}
             src={
               sender
-                ? "./src/svgs/ios-message-tail-right.svg"
-                : "./src/svgs/ios-message-tail-left.svg"
+                ? "/svgs/ios-message-tail-right.svg"
+                : "/svgs/ios-message-tail-left.svg"
             }
           />
         )}

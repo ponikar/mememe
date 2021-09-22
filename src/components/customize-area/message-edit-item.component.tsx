@@ -15,7 +15,7 @@ export const MessageEditItem: FC<
       className="my-2 p-3 bg-ios-dark-second flex w-full justify-between"
     >
       <div className="flex w-10/12 items-center">
-        <img src="./src/svgs/drag.svg" className="mr-2" />
+        <img src="/svgs/drag.svg" className="mr-2" />
         <p className="text-sm"> {index + 1} </p>
         <p className="ml-2 text-sm"> {message} </p>
       </div>
@@ -23,14 +23,14 @@ export const MessageEditItem: FC<
       <div className="flex w-2/12 justify-around items-center">
         <img
           onClick={(_) => setMessageID(id)}
-          src="./src/svgs/edit.svg"
+          src="/svgs/edit.svg"
           alt=""
           className="cursor-pointer p-1"
         />
         <img
           onClick={(_) => deleteMessage(id)}
           className="p-1 cursor-pointer"
-          src="./src/svgs/x.svg"
+          src="/svgs/x.svg"
           alt=""
         />
       </div>

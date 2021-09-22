@@ -32,20 +32,20 @@ export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
             </div>
             {sender &&
               (seen === "yes" ? (
-                <img src="./src/svgs/blue-tick.svg" className="w-4 ml-1" />
+                <img src="/svgs/blue-tick.svg" className="w-4 ml-1" />
               ) : (
-                <img src="./src/svgs/single-tick.svg" className="w-3 ml-1" />
+                <img src="/svgs/single-tick.svg" className="w-3 ml-1" />
               ))}
           </div>
           {!prevToMe &&
             (from === "sender" ? (
               <img
-                src="./src/svgs/whatsapp-msg-send.svg"
+                src="/svgs/whatsapp-msg-send.svg"
                 className="absolute -right-2 top-0"
               />
             ) : (
               <img
-                src="./src/svgs/whatsapp-msg-receive.svg"
+                src="/svgs/whatsapp-msg-receive.svg"
                 className="absolute -left-2 top-0"
               />
             ))}

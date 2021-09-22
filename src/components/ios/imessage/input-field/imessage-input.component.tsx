@@ -12,7 +12,7 @@ export const IMessageInput = () => {
         className="p-1 rounded-2xl px-2 bg-ios-dark-back resize-none text-ios-placeholder placeholder-ios-placeholder"
       ></textarea>
       <div className="bg-ios-icon rounded-full w-8 h-7 flex justify-center items-center">
-        <img src="./src/svgs/ios-mic.png" className="w-5 h-5" />
+        <img src="/svgs/ios-mic.png" className="w-5 h-5" />
       </div>
     </div>
   );
