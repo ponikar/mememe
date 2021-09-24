@@ -2,12 +2,7 @@ import React, { useCallback } from "react";
 import { useMessage } from "../../contexts/chat/message.hook";
 import { SectionContainer } from "../common/container.component";
 import { MessageEditItem } from "./message-edit-item.component";
-import {
-  DragDropContext,
-  Draggable,
-  Droppable,
-  DropResult,
-} from "react-beautiful-dnd";
+import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 export const MessageEditCollection = () => {
   const { messages, setMessages } = useMessage();
 
@@ -34,20 +29,7 @@ export const MessageEditCollection = () => {
               className="h-72 messages border border-ios-border px-2 max-h-72 overflow-auto"
             >
               {messages.map((msg, index) => (
-                <Draggable
-                  index={index}
-                  draggableId={msg.id.toString()}
-                  key={msg.id}
-                >
-                  {(provided) => (
-                    <MessageEditItem
-                      provided={provided}
-                      key={msg.id}
-                      {...msg}
-                      index={index}
-                    />
-                  )}
-                </Draggable>
+                <MessageEditItem key={msg.id} {...msg} index={index} />
               ))}
               {provider.placeholder}
             </div>

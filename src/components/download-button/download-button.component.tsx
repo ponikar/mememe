@@ -6,7 +6,7 @@ const downloadImage = () => {
 
   if (image) {
     htmlToImage
-      .toPng(image as HTMLElement, {
+      .toJpeg(image as HTMLElement, {
         quality: 0.6,
       })
       .then((dataUrl) => {

@@ -5,7 +5,7 @@ export const CHAT_THEME: ChatThemeType = {
     key: "WHATSAPP",
     img_url: "/svgs/whatsapp/whatsapp.svg",
     style: {
-      backgroundImage: `url('/svgs/whatsapp-background.svg')`,
+      backgroundImage: `url('/imgs/whatsapp_background.jpeg')`,
       backgroundSize: "cover",
     },
   },
