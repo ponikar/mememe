@@ -13,14 +13,27 @@ export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
           style={{
             width: "auto",
             maxWidth: "80%",
-            paddingRight: message.length < 10 ? "65px" : "10px",
-            paddingBottom: "10px",
+            paddingBottom: "5px",
           }}
-          className={`items-start  flex relative shadow-sm text-sm text-black rounded-md ${
+          className={`items-start flex-col py-1 flex relative shadow-sm text-sm text-black rounded-md ${
             sender ? "bg-android-whatsapp-chat" : " bg-white"
           } `}
         >
-          <p className="p-2 font-normal"> {message} </p>
+          <h2 className="font-medium px-2 text-sm z-50">Darshan Ponikar</h2>
+
+          <div className="p-1">
+            <img
+              src="https://images.pexels.com/photos/3615180/pexels-photo-3615180.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+              className="rounded w-full object-contain"
+            />
+          </div>
+
+          <p
+            style={{ paddingRight: message.length < 10 ? "65px" : "10px" }}
+            className="px-2 font-normal text-sm z-50"
+          >
+            {message}
+          </p>
           <div className="flex bottom-0  right-0 px-1 absolute">
             <div
               style={{ fontSize: "11px" }}
