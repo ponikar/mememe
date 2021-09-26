@@ -60,7 +60,10 @@ export const MessageForm: FC<MessageFormProps> = ({
         <SectionTitle title="Chat Message" />
 
         <input
-          onClick={(e) => (e.target!.value = null)}
+          onClick={(e) => {
+            const target = e.target as HTMLInputElement;
+            target.value = "";
+          }}
           onChange={onFileChange}
           ref={fileRef}
           type="file"
