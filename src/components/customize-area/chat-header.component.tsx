@@ -22,7 +22,8 @@ export const ChatHeader = () => {
   const onFileChange = ({
     target: { files },
   }: ChangeEvent<HTMLInputElement>) => {
-    if (files) updateHeader({ profileImage: URL.createObjectURL(files[0]) });
+    if (files?.length && files[0])
+      updateHeader({ profileImage: URL.createObjectURL(files[0]) });
   };
 
   const openFile = () => {

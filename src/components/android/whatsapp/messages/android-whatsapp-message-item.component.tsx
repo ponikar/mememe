@@ -3,7 +3,16 @@ import { WhatappColors } from "../../../../constants/whatsapp-colors";
 import { MessageItemsProps } from "../../../../contexts/chat/chat-type";
 
 export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
-  ({ sender, message = "Edit me!", time, seen, index, from, prevToMe }) => {
+  ({
+    sender,
+    message = "Edit me!",
+    time,
+    seen,
+    img_url,
+    from,
+    prevToMe,
+    sender_name,
+  }) => {
     return (
       <section
         className={`flex ${prevToMe ? "mt-1" : "mt-3"} w-full ${
@@ -14,38 +23,39 @@ export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
           style={{
             width: "auto",
             maxWidth: "80%",
-            paddingBottom: "5px",
+            paddingBottom: "2px",
           }}
           className={`items-start flex-col py-1 flex relative shadow-sm text-sm text-black rounded-md ${
             sender ? "bg-android-whatsapp-chat" : " bg-white"
           } `}
         >
-          <h2
-            style={{
-              color:
-                WhatappColors[
-                  Math.floor(Math.random() * WhatappColors.length - 1)
-                ],
-            }}
-            className="font-medium px-2 text-sm z-50"
-          >
-            Darshan Ponikar
-          </h2>
+          {sender_name && !sender && (
+            <h2
+              style={{
+                color:
+                  WhatappColors[
+                    Math.floor(Math.random() * WhatappColors.length - 1)
+                  ],
+              }}
+              className="font-medium px-2 text-sm z-10"
+            >
+              {sender_name}
+            </h2>
+          )}
 
-          <div className="p-1 z-50">
-            <img
-              src="https://images.pexels.com/photos/3615180/pexels-photo-3615180.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-              className="rounded w-full object-contain"
-            />
-          </div>
+          {img_url && (
+            <div className="px-1 z-10">
+              <img src={img_url} className="rounded w-full object-contain" />
+            </div>
+          )}
 
           <p
             style={{ paddingRight: message.length < 10 ? "65px" : "10px" }}
-            className="px-2 pb-3 font-normal text-sm z-50"
+            className="px-2 font-normal text-sm z-10"
           >
             {message}
           </p>
-          <div className="flex bottom-0  right-0 px-1 absolute">
+          <div className="flex justify-end w-full bottom-0  right-0 px-1 relative">
             <div
               style={{ fontSize: "10px" }}
               className={`ml-2  text-android-whatsapp-label-text ${

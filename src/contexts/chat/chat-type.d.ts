@@ -72,6 +72,8 @@ export type createMessageType = {
   time: string;
   seen: ChatMessageType["seen"];
   from: ChatMessageType["from"];
+  img_url?: string;
+  sender_name?: string;
 };
 
 export interface MessageItemsProps extends ChatMessageType {

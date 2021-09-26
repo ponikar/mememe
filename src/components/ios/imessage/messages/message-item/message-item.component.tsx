@@ -6,6 +6,7 @@ export const IMessageItem: FC<MessageItemsProps> = ({
   from,
   seen,
   prevToMe,
+  img_url,
 }) => {
   const sender = from === "sender";
   const showDelivered = !prevToMe && sender && seen;
@@ -21,14 +22,20 @@ export const IMessageItem: FC<MessageItemsProps> = ({
           width: "auto",
           margin: `${!prevToMe ? "5px" : "1.5px"} 0px`,
         }}
-        className={`px-3 ${
+        className={` ${
           sender ? " bg-ios-primary" : "bg-ios-dark-second"
-        } shadow relative text-sm py-2 w-auto  rounded-2xl `}
+        } shadow relative text-sm  w-auto  rounded-2xl `}
       >
-        <div className="text-sm" style={{ zIndex: 1000 }}>
-          {message}
-        </div>
-        {!prevToMe && (
+        {img_url && (
+          <img src={img_url} className="rounded-2xl w-full object-contain" />
+        )}
+
+        {!img_url && (
+          <div className="text-sm px-3 py-2" style={{ zIndex: 1000 }}>
+            {message}
+          </div>
+        )}
+        {!prevToMe && !img_url && (
           <img
             className="absolute"
             style={{
