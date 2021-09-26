@@ -1,4 +1,5 @@
 import React, { FC, memo } from "react";
+import { WhatappColors } from "../../../../constants/whatsapp-colors";
 import { MessageItemsProps } from "../../../../contexts/chat/chat-type";
 
 export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
@@ -19,9 +20,19 @@ export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
             sender ? "bg-android-whatsapp-chat" : " bg-white"
           } `}
         >
-          <h2 className="font-medium px-2 text-sm z-50">Darshan Ponikar</h2>
+          <h2
+            style={{
+              color:
+                WhatappColors[
+                  Math.floor(Math.random() * WhatappColors.length - 1)
+                ],
+            }}
+            className="font-medium px-2 text-sm z-50"
+          >
+            Darshan Ponikar
+          </h2>
 
-          <div className="p-1">
+          <div className="p-1 z-50">
             <img
               src="https://images.pexels.com/photos/3615180/pexels-photo-3615180.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
               className="rounded w-full object-contain"
@@ -30,13 +41,13 @@ export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
 
           <p
             style={{ paddingRight: message.length < 10 ? "65px" : "10px" }}
-            className="px-2 font-normal text-sm z-50"
+            className="px-2 pb-3 font-normal text-sm z-50"
           >
             {message}
           </p>
           <div className="flex bottom-0  right-0 px-1 absolute">
             <div
-              style={{ fontSize: "11px" }}
+              style={{ fontSize: "10px" }}
               className={`ml-2  text-android-whatsapp-label-text ${
                 !sender && "mr-1"
               }`}
@@ -50,6 +61,8 @@ export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
                 <img src="/svgs/single-tick.svg" className="w-3 ml-1" />
               ))}
           </div>
+
+          {/* Message Tangle  */}
           {!prevToMe &&
             (from === "sender" ? (
               <img
@@ -59,7 +72,7 @@ export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
             ) : (
               <img
                 src="/svgs/whatsapp-msg-receive.svg"
-                className="absolute -left-2 top-0"
+                className="absolute -left-2 -top-0"
               />
             ))}
         </div>
