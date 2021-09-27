@@ -22,18 +22,24 @@ export const MessageEditItem: FC<ChatMessageType & { index: number }> = memo(
             <div className="flex w-10/12 items-center">
               <img src="/svgs/drag.svg" className="mr-2" />
               <p className="text-sm"> {index + 1} </p>
-              <p className="ml-2 text-sm"> {message} </p>
+              <p className="ml-2 text-sm">
+                {message ? (
+                  <>
+                    {message.substr(0, 20)}
+                    {message.length >= 20 && <span>...</span>}
+                  </>
+                ) : (
+                  "Shared Media"
+                )}
+              </p>
             </div>
 
             <div className="flex w-3/12 justify-around items-center">
               <img
-                onClick={(_) => {
-                  console.log("WORKING");
-                  setMessageID(id);
-                }}
+                onClick={(_) => setMessageID(id)}
                 src="/svgs/edit.svg"
                 alt=""
-                className="cursor-pointer border p-3"
+                className="cursor-pointer p-3"
               />
               <img
                 onClick={(_) => deleteMessage(id)}

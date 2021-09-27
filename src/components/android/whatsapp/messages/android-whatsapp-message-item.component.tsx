@@ -37,7 +37,7 @@ export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
                     Math.floor(Math.random() * WhatappColors.length - 1)
                   ],
               }}
-              className="font-medium px-2 text-sm z-10"
+              className="font-medium px-2 text-sm "
             >
               {sender_name}
             </h2>
@@ -51,7 +51,7 @@ export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
 
           <p
             style={{ paddingRight: message.length < 10 ? "65px" : "10px" }}
-            className="px-2 font-normal text-sm z-10"
+            className="px-2 z-10 font-normal text-sm "
           >
             {message}
           </p>
