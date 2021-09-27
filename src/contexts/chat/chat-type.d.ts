@@ -66,16 +66,12 @@ export type ActionPayloadType = {
   [P in keyof ActionTypes]: ActionTypes[P]["payload"];
 };
 
-export type createMessageType = {
-  type: ChatMessageType["type"];
-  message: string;
-  time: string;
-  seen: ChatMessageType["seen"];
-  from: ChatMessageType["from"];
-  img_url?: string;
-  sender_name?: string;
-};
+export type createMessageType = Omit<ChatMessageType, "id">;
 
+type Omit<T, ProperyOfT extends keyof T> = Pick<
+  T,
+  Exclude<keyof T, ProperyOfT>
+>;
 export interface MessageItemsProps extends ChatMessageType {
   sender?: boolean;
   index: number;
