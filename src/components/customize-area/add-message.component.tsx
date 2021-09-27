@@ -12,6 +12,7 @@ const INITIAL_STATE: createMessageType = {
   time: "10:30 AM",
   from: "receiver",
   type: "message",
+  sender_name: "",
 };
 
 export const AddMessage = () => {

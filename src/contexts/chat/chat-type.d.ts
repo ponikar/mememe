@@ -6,7 +6,10 @@ export interface ChatMessageType {
   seen: "yes" | "no";
   time: string;
   from: "sender" | "receiver" | null;
-  type: "label" | "message";
+  type: "label" | "message" | "image";
+
+  img_url?: string;
+  sender_name?: string;
 }
 
 export interface HeaderType {
@@ -69,6 +72,8 @@ export type createMessageType = {
   time: string;
   seen: ChatMessageType["seen"];
   from: ChatMessageType["from"];
+  img_url?: string;
+  sender_name?: string;
 };
 
 export interface MessageItemsProps extends ChatMessageType {

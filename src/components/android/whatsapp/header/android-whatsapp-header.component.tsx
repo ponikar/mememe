@@ -12,8 +12,8 @@ export const AndroidWhatsappHeader = () => {
           className="rounded-full ml-1 h-9 w-9 object-cover"
         />
         <div className="ml-2 text-android-whatsapp-highlight">
-          <h2 className="font-semibold"> {profileName} </h2>
-          <h3 className="text-xs"> {activity_status} </h3>
+          <h2 className="font-semibold text-sm"> {profileName} </h2>
+          <h3 style={{ fontSize: "10px" }}> {activity_status} </h3>
         </div>
       </div>
       <div className="flex">

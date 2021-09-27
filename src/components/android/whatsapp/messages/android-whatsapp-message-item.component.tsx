@@ -1,8 +1,18 @@
 import React, { FC, memo } from "react";
+import { WhatappColors } from "../../../../constants/whatsapp-colors";
 import { MessageItemsProps } from "../../../../contexts/chat/chat-type";
 
 export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
-  ({ sender, message = "Edit me!", time, seen, index, from, prevToMe }) => {
+  ({
+    sender,
+    message = "Edit me!",
+    time,
+    seen,
+    img_url,
+    from,
+    prevToMe,
+    sender_name,
+  }) => {
     return (
       <section
         className={`flex ${prevToMe ? "mt-1" : "mt-3"} w-full ${
@@ -13,17 +23,41 @@ export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
           style={{
             width: "auto",
             maxWidth: "80%",
-            paddingRight: message.length < 10 ? "65px" : "10px",
-            paddingBottom: "10px",
+            paddingBottom: "2px",
           }}
-          className={`items-start  flex relative shadow-sm text-sm text-black rounded-md ${
+          className={`items-start flex-col py-1 flex relative shadow-sm text-sm text-black rounded-md ${
             sender ? "bg-android-whatsapp-chat" : " bg-white"
           } `}
         >
-          <p className="p-2 font-normal"> {message} </p>
-          <div className="flex bottom-0  right-0 px-1 absolute">
+          {sender_name && !sender && (
+            <h2
+              style={{
+                color:
+                  WhatappColors[
+                    Math.floor(Math.random() * WhatappColors.length - 1)
+                  ],
+              }}
+              className="font-medium px-2 text-sm "
+            >
+              {sender_name}
+            </h2>
+          )}
+
+          {img_url && (
+            <div className="px-1 z-10">
+              <img src={img_url} className="rounded w-full object-contain" />
+            </div>
+          )}
+
+          <p
+            style={{ paddingRight: message.length < 10 ? "65px" : "10px" }}
+            className="px-2 z-10 font-normal text-sm "
+          >
+            {message}
+          </p>
+          <div className="flex justify-end w-full bottom-0  right-0 px-1 relative">
             <div
-              style={{ fontSize: "11px" }}
+              style={{ fontSize: "10px" }}
               className={`ml-2  text-android-whatsapp-label-text ${
                 !sender && "mr-1"
               }`}
@@ -37,6 +71,8 @@ export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
                 <img src="/svgs/single-tick.svg" className="w-3 ml-1" />
               ))}
           </div>
+
+          {/* Message Tangle  */}
           {!prevToMe &&
             (from === "sender" ? (
               <img
@@ -46,7 +82,7 @@ export const AndroidWhatsappMessageItem: FC<MessageItemsProps> = memo(
             ) : (
               <img
                 src="/svgs/whatsapp-msg-receive.svg"
-                className="absolute -left-2 top-0"
+                className="absolute -left-2 -top-0"
               />
             ))}
         </div>
