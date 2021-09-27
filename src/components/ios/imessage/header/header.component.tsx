@@ -1,5 +1,6 @@
 import React from "react";
 import { useHeader } from "../../../../contexts/chat/header.hook";
+import { FlexBox } from "../../../common/container.component";
 
 export const IMessageHeader = () => {
   const [{ profileImage, profileName }] = useHeader();
@@ -15,20 +16,22 @@ export const IMessageHeader = () => {
         </div>
 
         {/* profile */}
-        <div className="relative -left-5">
+        <FlexBox className="relative flex-col justify-center -left-5">
           <img
             src={profileImage}
             className="bg-ios-border rounded-full h-10 w-10 object-cover"
           />
           <div className="flex justify-center items-center mt-1">
-            <div className="text-xs text-center">{profileName}</div>
+            <div style={{ fontSize: "10px" }} className="text-center">
+              {profileName}
+            </div>
             <img
               className="ml-1"
               style={{ width: "6px" }}
               src="/svgs/ios-small-right.svg"
             />
           </div>
-        </div>
+        </FlexBox>
 
         <div />
       </nav>
